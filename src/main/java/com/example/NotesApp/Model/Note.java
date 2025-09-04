@@ -17,6 +17,9 @@ public class Note {
     private String content;
     private Long userId;
     private OffsetDateTime createdAt;
+
+
+    
     private OffsetDateTime updatedAt;
     @Version
     private Long version;
