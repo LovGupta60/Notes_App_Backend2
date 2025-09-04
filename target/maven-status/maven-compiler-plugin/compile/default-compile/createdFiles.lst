@@ -1,5 +1,6 @@
 com\example\NotesApp\Model\UserDTO.class
 com\example\NotesApp\Repositary\UserRepository.class
+com\example\NotesApp\Config\DatasourceConfigDebug.class
 com\example\NotesApp\Security\AppUserDetailsService.class
 com\example\NotesApp\Controller\AuthController.class
 com\example\NotesApp\Service\NoteService.class

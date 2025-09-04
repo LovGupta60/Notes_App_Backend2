@@ -15,11 +15,6 @@ public class UserService {
     @Autowired
     private  PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public UserService(UserRepository repo, PasswordEncoder passwordEncoder) {
-        this.repo = repo;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     public User register(String username, String rawPassword) {
         if (repo.findByUsername(username).isPresent()) {

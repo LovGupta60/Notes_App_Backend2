@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 @RestController
 @RequestMapping("/api/notes")
-@CrossOrigin(origins = "https://notes-app-atzz.vercel.app/")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class NoteController {
     @Autowired
     private  NoteService service;

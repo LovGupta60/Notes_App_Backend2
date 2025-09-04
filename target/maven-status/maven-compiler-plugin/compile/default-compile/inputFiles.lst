@@ -8,6 +8,7 @@ C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\Not
 C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\NotesApp\Security\JwtFilter.java
 C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\NotesApp\Model\User.java
 C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\NotesApp\Security\SecurityConfig.java
+C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\NotesApp\Config\DatasourceConfigDebug.java
 C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\NotesApp\Security\AppUserDetailsService.java
 C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\NotesApp\Security\JwtUtil.java
 C:\Users\Hp\Desktop\Backend_Notes\Backend\NotesApp\src\main\java\com\example\NotesApp\Model\Note.java

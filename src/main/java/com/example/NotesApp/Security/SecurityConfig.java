@@ -2,6 +2,7 @@ package com.example.NotesApp.Security;
 
 import com.example.NotesApp.Security.AppUserDetailsService;
 import com.example.NotesApp.Security.JwtFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,8 +20,11 @@ import java.util.List;
 
 @Configuration
 public class SecurityConfig {
-    private final JwtFilter jwtFilter;
-    private final AppUserDetailsService uds;
+    @Autowired
+    private  JwtFilter jwtFilter;
+
+    @Autowired
+    private  AppUserDetailsService uds;
 
     public SecurityConfig(JwtFilter jwtFilter, AppUserDetailsService uds) {
         this.jwtFilter = jwtFilter;
@@ -52,7 +56,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("https://notes-app-atzz.vercel.app/")); // React frontend
+        configuration.setAllowedOrigins(List.of("http://localhost:3000/")); // React frontend
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
