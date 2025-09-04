@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,9 @@ public class AuthController {
     @Autowired
     private  JwtUtil jwtUtil;
 
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UserDTO userDTO) {
         if (userDTO.getPassword() == null || userDTO.getUsername() == null) {
@@ -42,14 +47,23 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
-        Optional<User> opt = userService.findByUsername(userDTO.getUsername());
-        if (opt.isEmpty() || !passwordEncoder.matches(userDTO.getPassword(), opt.get().getPassword())) {
+        try {
+            // Authenticate using Spring Security
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            userDTO.getUsername(),
+                            userDTO.getPassword()
+                    )
+            );
+
+            // If authentication is successful, generate JWT
+            String token = jwtUtil.generateToken(userDTO.getUsername());
+
+            return ResponseEntity.ok(Map.of("token", token));
+
+        } catch (Exception e) {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
-
-        String token = jwtUtil.generateToken(opt.get().getUsername());
-
-        // Just return token (React expects { token: "..." })
-        return ResponseEntity.ok(Map.of("token", token));
     }
+
 }

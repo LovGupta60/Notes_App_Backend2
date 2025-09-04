@@ -19,7 +19,7 @@ public class Note {
     private OffsetDateTime createdAt;
 
 
-    
+
     private OffsetDateTime updatedAt;
     @Version
     private Long version;
